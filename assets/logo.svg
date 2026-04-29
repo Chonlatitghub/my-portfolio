@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 420" fill="none">
+  <!-- "2" large -->
+  <text x="20" y="310" font-family="Arial Black, sans-serif" font-weight="900" font-size="310" fill="#C8F135">2</text>
+  <!-- "5" large, offset right -->
+  <text x="165" y="380" font-family="Arial Black, sans-serif" font-weight="900" font-size="310" fill="#C8F135">5</text>
+
+  <!-- Timeline ruler above FPS -->
+  <g transform="translate(232, 95)">
+    <!-- ruler ticks -->
+    <line x1="0"   y1="18" x2="0"   y2="8"  stroke="#C8F135" stroke-width="1.5"/>
+    <line x1="8"   y1="18" x2="8"   y2="12" stroke="#C8F135" stroke-width="1"/>
+    <line x1="16"  y1="18" x2="16"  y2="12" stroke="#C8F135" stroke-width="1"/>
+    <line x1="24"  y1="18" x2="24"  y2="8"  stroke="#C8F135" stroke-width="1.5"/>
+    <line x1="32"  y1="18" x2="32"  y2="12" stroke="#C8F135" stroke-width="1"/>
+    <line x1="40"  y1="18" x2="40"  y2="12" stroke="#C8F135" stroke-width="1"/>
+    <line x1="48"  y1="18" x2="48"  y2="8"  stroke="#C8F135" stroke-width="1.5"/>
+    <line x1="56"  y1="18" x2="56"  y2="12" stroke="#C8F135" stroke-width="1"/>
+    <line x1="64"  y1="18" x2="64"  y2="12" stroke="#C8F135" stroke-width="1"/>
+    <line x1="72"  y1="18" x2="72"  y2="8"  stroke="#C8F135" stroke-width="1.5"/>
+    <line x1="80"  y1="18" x2="80"  y2="12" stroke="#C8F135" stroke-width="1"/>
+    <line x1="88"  y1="18" x2="88"  y2="12" stroke="#C8F135" stroke-width="1"/>
+    <line x1="96"  y1="18" x2="96"  y2="8"  stroke="#C8F135" stroke-width="1.5"/>
+    <!-- playhead diamond -->
+    <polygon points="48,0 42,10 48,18 54,10" fill="#C8F135"/>
+  </g>
+
+  <!-- "FPS" text -->
+  <text x="235" y="170" font-family="Arial Black, sans-serif" font-weight="900" font-size="62" fill="#C8F135" letter-spacing="2">FPS</text>
+
+  <!-- razor / cursor icon between 2 and 5 -->
+  <g transform="translate(172, 268)">
+    <!-- arrow cursor -->
+    <polygon points="0,0 0,28 8,22 13,34 18,32 13,20 22,20" fill="#C8F135"/>
+  </g>
+</svg>
