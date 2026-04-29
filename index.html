@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio — Creative Works</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Grain overlay -->
+  <div class="grain"></div>
+
+  <!-- Custom cursor -->
+  <div class="cursor-ring" id="cursorRing"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-cut" id="cursorCut">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="6" cy="6" r="2.5" stroke="currentColor" stroke-width="1.4"/>
+      <circle cx="6" cy="18" r="2.5" stroke="currentColor" stroke-width="1.4"/>
+      <line x1="8.2" y1="7.2" x2="20" y2="12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      <line x1="8.2" y1="16.8" x2="20" y2="12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+    </svg>
+  </div>
+
+  <!-- Timecode HUD -->
+  <div class="hud-timecode" id="hudTimecode">
+    <span class="hud-rec"><span class="rec-dot"></span>REC</span>
+    <span class="hud-tc" id="tcDisplay">00:00:00:00</span>
+  </div>
+
+  <!-- Edit toolbar -->
+  <div class="edit-toolbar" id="editToolbar">
+    <div class="tool-item active" data-tip="Select" id="toolSelect">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M5 3l14 9-7 1-4 7L5 3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="tool-item" data-tip="Razor / Cut" id="toolRazor">
+      <svg viewBox="0 0 24 24" fill="none">
+        <circle cx="6" cy="6" r="2.5" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="6" cy="18" r="2.5" stroke="currentColor" stroke-width="1.4"/>
+        <line x1="8.2" y1="7.2" x2="21" y2="12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        <line x1="8.2" y1="16.8" x2="21" y2="12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="tool-item" data-tip="Text">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M4 7V5h16v2M12 5v14M9 19h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="tool-item" data-tip="Color Grade">
+      <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M12 4a8 8 0 010 16" fill="currentColor" opacity=".25"/><circle cx="12" cy="12" r="3" fill="currentColor" opacity=".5"/></svg>
+    </div>
+    <div class="tool-item" data-tip="Effects">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="tool-divider"></div>
+    <div class="tool-item" data-tip="Zoom In">
+      <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M20 20l-3-3M8 11h6M11 8v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </div>
+  </div>
+
+  <!-- Cut flash overlay -->
+  <div class="cut-flash" id="cutFlash"></div>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <a href="#" class="nav-logo">Studio<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#work" class="mobile-link">Work</a></li>
+      <li><a href="#about" class="mobile-link">About</a></li>
+      <li><a href="#contact" class="mobile-link">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="hero-eyebrow">Creative Director &amp; Video Producer</p>
+      <h1 class="hero-title">
+        Crafting stories<br />
+        <em>that resonate.</em>
+      </h1>
+      <p class="hero-sub">Video · Graphic Design · Motion Graphic</p>
+      <a href="#work" class="btn-primary">View Work</a>
+    </div>
+    <!-- Mini timeline -->
+    <div class="hero-timeline">
+      <div class="tl-header">
+        <span class="tl-label">SEQUENCE_01.prproj</span>
+        <span class="tl-fps">24fps</span>
+      </div>
+      <div class="tl-track-area">
+        <div class="tl-track tl-track--v1">
+          <div class="tl-clip" style="left:2%;width:22%">Brand Doc</div>
+          <div class="tl-clip tl-clip--gap" style="left:26%;width:14%">Event Film</div>
+          <div class="tl-clip" style="left:42%;width:18%">Reel</div>
+          <div class="tl-clip tl-clip--gap" style="left:62%;width:20%">Education</div>
+          <div class="tl-clip" style="left:84%;width:14%">Motion</div>
+        </div>
+        <div class="tl-track tl-track--v2">
+          <div class="tl-clip tl-clip--audio" style="left:0%;width:35%"></div>
+          <div class="tl-clip tl-clip--audio" style="left:38%;width:28%"></div>
+          <div class="tl-clip tl-clip--audio" style="left:70%;width:28%"></div>
+        </div>
+        <div class="tl-playhead" id="tlPlayhead">
+          <div class="tl-ph-head"></div>
+          <div class="tl-ph-line"></div>
+        </div>
+      </div>
+      <div class="tl-timecode" id="tlTimecode">00:00:00:00</div>
+    </div>
+
+    <div class="hero-scroll">
+      <span class="scroll-line"></span>
+      <span class="scroll-label">scroll</span>
+    </div>
+  </section>
+
+  <!-- Work -->
+  <section class="work" id="work">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Selected Works</p>
+        <h2 class="section-title">Portfolio</h2>
+      </div>
+
+      <!-- Filter -->
+      <div class="filter-bar" id="filterBar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="longform">Video Longform</button>
+        <button class="filter-btn" data-filter="shortform">Short Form</button>
+        <button class="filter-btn" data-filter="education">Education</button>
+        <button class="filter-btn" data-filter="lifestyle">Lifestyle</button>
+        <button class="filter-btn" data-filter="travel">Travel</button>
+        <button class="filter-btn" data-filter="graphic">Graphic Design</button>
+        <button class="filter-btn" data-filter="motion">Motion Graphic</button>
+      </div>
+
+      <!-- Grid -->
+      <div class="work-grid" id="workGrid">
+
+        <!-- Longform — ใส่ YouTube ID จริงแทน YOUTUBE_ID -->
+        <div class="work-card" data-category="longform"
+             data-media-type="youtube" data-media-id="YOUTUBE_ID_1"
+             data-title="Brand Documentary" data-desc="Full-length brand story exploring identity and purpose — 8 min.">
+          <div class="card-media">
+            <div class="card-thumb" style="--hue:20">
+              <img class="card-thumb-img" src="https://img.youtube.com/vi/YOUTUBE_ID_1/mqdefault.jpg"
+                   alt="Brand Documentary" loading="lazy" onerror="this.style.display='none'" />
+              <div class="play-icon">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><polygon points="10,8 16,12 10,16" fill="currentColor"/></svg>
+              </div>
+              <span class="card-type-badge">
+                <svg class="badge-yt" viewBox="0 0 24 24"><path d="M23 7s-.3-2-1.2-2.7c-1.1-1.2-2.4-1.2-3-1.3C16.2 3 12 3 12 3s-4.2 0-6.8.1c-.6.1-1.9.1-3 1.3C1.3 5 1 7 1 7S.7 9.2.7 11.4v2c0 2.2.3 4.4.3 4.4s.3 2 1.2 2.7c1.1 1.2 2.6 1.1 3.3 1.2C7.4 22 12 22 12 22s4.2 0 6.8-.3c.6-.1 1.9-.1 3-1.3.9-.7 1.2-2.7 1.2-2.7s.3-2.2.3-4.4v-2C23.3 9.2 23 7 23 7zM9.7 15.5V8.4l8.1 3.6-8.1 3.5z" fill="currentColor"/></svg>
+                Longform
+              </span>
+            </div>
+          </div>
+          <div class="card-info">
+            <p class="card-category">Video · Longform</p>
+            <h3 class="card-title">Brand Documentary</h3>
+            <p class="card-desc">Full-length brand story exploring identity and purpose — 8 min.</p>
+          </div>
+        </div>
+
+        <div class="work-card" data-category="longform"
+             data-media-type="gdrive" data-media-id="GDRIVE_FILE_ID_1"
+             data-title="Event Highlight Film" data-desc="Annual conference recap with interview cuts — 12 min.">
+          <div class="card-media">
+            <div class="card-thumb" style="--hue:30">
+              <div class="card-thumb-drive">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 19.5h20L12 2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M2 19.5h20" stroke="currentColor" stroke-width="1.4"/><path d="M8.5 13l3.5-6 3.5 6" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+                <span>Google Drive</span>
+              </div>
+              <div class="play-icon">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><polygon points="10,8 16,12 10,16" fill="currentColor"/></svg>
+              </div>
+              <span class="card-type-badge card-type-badge--drive">
+                <svg viewBox="0 0 24 24" fill="none" style="width:10px;height:10px"><path d="M12 2L2 19.5h20L12 2z" fill="currentColor"/></svg>
+                Longform
+              </span>
+            </div>
+          </div>
+          <div class="card-info">
+            <p class="card-category">Video · Longform</p>
+            <h3 class="card-title">Event Highlight Film</h3>
+            <p class="card-desc">Annual conference recap with interview cuts — 12 min.</p>
+          </div>
+        </div>
+
+        <!-- Short Form -->
+        <div class="work-card work-card--tall" data-category="shortform"
+             data-media-type="youtube" data-media-id="YOUTUBE_ID_2"
+             data-title="Product Launch Reel" data-desc="Vertical-first product reveal — 30 sec.">
+          <div class="card-media">
+            <div class="card-thumb card-thumb--vertical" style="--hue:200">
+              <img class="card-thumb-img" src="https://img.youtube.com/vi/YOUTUBE_ID_2/mqdefault.jpg"
+                   alt="Product Launch Reel" loading="lazy" onerror="this.style.display='none'" />
+              <div class="play-icon">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><polygon points="10,8 16,12 10,16" fill="currentColor"/></svg>
+              </div>
+              <span class="card-type-badge">
+                <svg class="badge-yt" viewBox="0 0 24 24"><path d="M23 7s-.3-2-1.2-2.7c-1.1-1.2-2.4-1.2-3-1.3C16.2 3 12 3 12 3s-4.2 0-6.8.1c-.6.1-1.9.1-3 1.3C1.3 5 1 7 1 7S.7 9.2.7 11.4v2c0 2.2.3 4.4.3 4.4s.3 2 1.2 2.7c1.1 1.2 2.6 1.1 3.3 1.2C7.4 22 12 22 12 22s4.2 0 6.8-.3c.6-.1 1.9-.1 3-1.3.9-.7 1.2-2.7 1.2-2.7s.3-2.2.3-4.4v-2C23.3 9.2 23 7 23 7zM9.7 15.5V8.4l8.1 3.6-8.1 3.5z" fill="currentColor"/></svg>
+                Reel / TikTok
+              </span>
+            </div>
+          </div>
+          <div class="card-info">
+            <p class="card-category">Video · Short Form</p>
+            <h3 class="card-title">Product Launch Reel</h3>
+            <p class="card-desc">Vertical-first product reveal — 30 sec.</p>
+          </div>
+        </div>
+
+        <div class="work-card work-card--tall" data-category="shortform"
+             data-media-type="youtube" data-media-id="YOUTUBE_ID_3"
+             data-title="Lifestyle TikTok Series" data-desc="3-part lifestyle series for social media — 15–30 sec each.">
+          <div class="card-media">
+            <div class="card-thumb card-thumb--vertical" style="--hue:210">
+              <img class="card-thumb-img" src="https://img.youtube.com/vi/YOUTUBE_ID_3/mqdefault.jpg"
+                   alt="Lifestyle TikTok Series" loading="lazy" onerror="this.style.display='none'" />
+              <div class="play-icon">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><polygon points="10,8 16,12 10,16" fill="currentColor"/></svg>
+              </div>
+              <span class="card-type-badge">
+                <svg class="badge-yt" viewBox="0 0 24 24"><path d="M23 7s-.3-2-1.2-2.7c-1.1-1.2-2.4-1.2-3-1.3C16.2 3 12 3 12 3s-4.2 0-6.8.1c-.6.1-1.9.1-3 1.3C1.3 5 1 7 1 7S.7 9.2.7 11.4v2c0 2.2.3 4.4.3 4.4s.3 2 1.2 2.7c1.1 1.2 2.6 1.1 3.3 1.2C7.4 22 12 22 12 22s4.2 0 6.8-.3c.6-.1 1.9-.1 3-1.3.9-.7 1.2-2.7 1.2-2.7s.3-2.2.3-4.4v-2C23.3 9.2 23 7 23 7zM9.7 15.5V8.4l8.1 3.6-8.1 3.5z" fill="currentColor"/></svg>
+                Reel / TikTok
+              </span>
+            </div>
+          </div>
+          <div class="card-info">
+            <p class="card-category">Video · Short Form</p>
+            <h3 class="card-title">Lifestyle TikTok Series</h3>
+            <p class="card-desc">3-part lifestyle series for social media — 15–30 sec each.</p>
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div class="work-card" data-category="education"
+             data-media-type="youtube" data-media-id="YOUTUBE_ID_4"
+             data-title="Online Course Series" data-desc="10-episode e-learning production with motion graphics — 5 min/ep.">
+          <div class="card-media">
+            <div class="card-thumb" style="--hue:140">
+              <img class="card-thumb-img" src="https://img.youtube.com/vi/YOUTUBE_ID_4/mqdefault.jpg"
+                   alt="Online Course Series" loading="lazy" onerror="this.style.display='none'" />
+              <div class="play-icon">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><polygon points="10,8 16,12 10,16" fill="currentColor"/></svg>
+              </div>
+              <span class="card-type-badge">
+                <svg class="badge-yt" viewBox="0 0 24 24"><path d="M23 7s-.3-2-1.2-2.7c-1.1-1.2-2.4-1.2-3-1.3C16.2 3 12 3 12 3s-4.2 0-6.8.1c-.6.1-1.9.1-3 1.3C1.3 5 1 7 1 7S.7 9.2.7 11.4v2c0 2.2.3 4.4.3 4.4s.3 2 1.2 2.7c1.1 1.2 2.6 1.1 3.3 1.2C7.4 22 12 22 12 22s4.2 0 6.8-.3c.6-.1 1.9-.1 3-1.3.9-.7 1.2-2.7 1.2-2.7s.3-2.2.3-4.4v-2C23.3 9.2 23 7 23 7zM9.7 15.5V8.4l8.1 3.6-8.1 3.5z" fill="currentColor"/></svg>
+                Education
+              </span>
+            </div>
+          </div>
+          <div class="card-info">
+            <p class="card-category">Video · Education</p>
+            <h3 class="card-title">Online Course Series</h3>
+            <p class="card-desc">10-episode e-learning production with motion graphics — 5 min/ep.</p>
+          </div>
+        </div>
+
+        <div class="work-card" data-category="education"
+             data-media-type="gdrive" data-media-id="GDRIVE_FILE_ID_2"
+             data-title="Explainer Video" data-desc="Step-by-step product tutorial with kinetic typography — 3 min.">
+          <div class="card-media">
+            <div class="card-thumb" style="--hue:155">
+              <div class="card-thumb-drive">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 19.5h20L12 2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+                <span>Google Drive</span>
+              </div>
+              <div class="play-icon">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><polygon points="10,8 16,12 10,16" fill="currentColor"/></svg>
+              </div>
+              <span class="card-type-badge card-type-badge--drive">
+                <svg viewBox="0 0 24 24" fill="none" style="width:10px;height:10px"><path d="M12 2L2 19.5h20L12 2z" fill="currentColor"/></svg>
+                Education
+              </span>
+            </div>
+          </div>
+          <div class="card-info">
+            <p class="card-category">Video · Education</p>
+            <h3 class="card-title">Explainer Video</h3>
+            <p class="card-desc">Step-by-step product tutorial with kinetic typography — 3 min.</p>
+          </div>
+        </div>
+
+        <!-- Lifestyle -->
+        <div class="work-card" data-category="lifestyle"
+             data-media-type="youtube" data-media-id="YOUTUBE_ID_5"
+             data-title="Morning Routine Film" data-desc="Calm lifestyle film documenting a creator's morning ritual — 5 min.">
+          <div class="card-media">
+            <div class="card-thumb" style="--hue:45">
+              <img class="card-thumb-img" src="https://img.youtube.com/vi/YOUTUBE_ID_5/mqdefault.jpg"
+                   alt="Morning Routine Film" loading="lazy" onerror="this.style.display='none'" />
+              <div class="play-icon">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><polygon points="10,8 16,12 10,16" fill="currentColor"/></svg>
+              </div>
+              <span class="card-type-badge">
+                <svg class="badge-yt" viewBox="0 0 24 24"><path d="M23 7s-.3-2-1.2-2.7c-1.1-1.2-2.4-1.2-3-1.3C16.2 3 12 3 12 3s-4.2 0-6.8.1c-.6.1-1.9.1-3 1.3C1.3 5 1 7 1 7S.7 9.2.7 11.4v2c0 2.2.3 4.4.3 4.4s.3 2 1.2 2.7c1.1 1.2 2.6 1.1 3.3 1.2C7.4 22 12 22 12 22s4.2 0 6.8-.3c.6-.1 1.9-.1 3-1.3.9-.7 1.2-2.7 1.2-2.7s.3-2.2.3-4.4v-2C23.3 9.2 23 7 23 7zM9.7 15.5V8.4l8.1 3.6-8.1 3.5z" fill="currentColor"/></svg>
+                Lifestyle
+              </span>
+            </div>
+          </div>
+          <div class="card-info">
+            <p class="card-category">Lifestyle</p>
+            <h3 class="card-title">Morning Routine Film</h3>
+            <p class="card-desc">Calm lifestyle film documenting a creator's morning ritual — 5 min.</p>
+          </div>
+        </div>
+
+        <div class="work-card work-card--tall" data-category="lifestyle"
+             data-media-type="youtube" data-media-id="YOUTUBE_ID_6"
+             data-title="F&amp;B Lifestyle Reel" data-desc="Café atmosphere and menu reveal — vertical format 45 sec.">
+          <div class="card-media">
+            <div class="card-thumb card-thumb--vertical" style="--hue:38">
+              <img class="card-thumb-img" src="https://img.youtube.com/vi/YOUTUBE_ID_6/mqdefault.jpg"
+                   alt="F&B Lifestyle Reel" loading="lazy" onerror="this.style.display='none'" />
+              <div class="play-icon">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><polygon points="10,8 16,12 10,16" fill="currentColor"/></svg>
+              </div>
+              <span class="card-type-badge">
+                <svg class="badge-yt" viewBox="0 0 24 24"><path d="M23 7s-.3-2-1.2-2.7c-1.1-1.2-2.4-1.2-3-1.3C16.2 3 12 3 12 3s-4.2 0-6.8.1c-.6.1-1.9.1-3 1.3C1.3 5 1 7 1 7S.7 9.2.7 11.4v2c0 2.2.3 4.4.3 4.4s.3 2 1.2 2.7c1.1 1.2 2.6 1.1 3.3 1.2C7.4 22 12 22 12 22s4.2 0 6.8-.3c.6-.1 1.9-.1 3-1.3.9-.7 1.2-2.7 1.2-2.7s.3-2.2.3-4.4v-2C23.3 9.2 23 7 23 7zM9.7 15.5V8.4l8.1 3.6-8.1 3.5z" fill="currentColor"/></svg>
+                Lifestyle
+              </span>
+            </div>
+          </div>
+          <div class="card-info">
+            <p class="card-category">Lifestyle</p>
+            <h3 class="card-title">F&amp;B Lifestyle Reel</h3>
+            <p class="card-desc">Café atmosphere and menu reveal — vertical format 45 sec.</p>
+          </div>
+        </div>
+
+        <!-- Travel -->
+        <div class="work-card" data-category="travel"
+             data-media-type="youtube" data-media-id="YOUTUBE_ID_7"
+             data-title="Chiang Mai Travel Film" data-desc="Cinematic travel documentary through northern Thailand — 10 min.">
+          <div class="card-media">
+            <div class="card-thumb" style="--hue:170">
+              <img class="card-thumb-img" src="https://img.youtube.com/vi/YOUTUBE_ID_7/mqdefault.jpg"
+                   alt="Chiang Mai Travel Film" loading="lazy" onerror="this.style.display='none'" />
+              <div class="play-icon">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><polygon points="10,8 16,12 10,16" fill="currentColor"/></svg>
+              </div>
+              <span class="card-type-badge">
+                <svg class="badge-yt" viewBox="0 0 24 24"><path d="M23 7s-.3-2-1.2-2.7c-1.1-1.2-2.4-1.2-3-1.3C16.2 3 12 3 12 3s-4.2 0-6.8.1c-.6.1-1.9.1-3 1.3C1.3 5 1 7 1 7S.7 9.2.7 11.4v2c0 2.2.3 4.4.3 4.4s.3 2 1.2 2.7c1.1 1.2 2.6 1.1 3.3 1.2C7.4 22 12 22 12 22s4.2 0 6.8-.3c.6-.1 1.9-.1 3-1.3.9-.7 1.2-2.7 1.2-2.7s.3-2.2.3-4.4v-2C23.3 9.2 23 7 23 7zM9.7 15.5V8.4l8.1 3.6-8.1 3.5z" fill="currentColor"/></svg>
+                Travel
+              </span>
+            </div>
+          </div>
+          <div class="card-info">
+            <p class="card-category">Travel</p>
+            <h3 class="card-title">Chiang Mai Travel Film</h3>
+            <p class="card-desc">Cinematic travel documentary through northern Thailand — 10 min.</p>
+          </div>
+        </div>
+
+        <div class="work-card" data-category="travel"
+             data-media-type="youtube" data-media-id="YOUTUBE_ID_8"
+             data-title="Island Hopping Vlog" data-desc="Short-form travel series covering 5 islands — 3–5 min/ep.">
+          <div class="card-media">
+            <div class="card-thumb" style="--hue:190">
+              <img class="card-thumb-img" src="https://img.youtube.com/vi/YOUTUBE_ID_8/mqdefault.jpg"
+                   alt="Island Hopping Vlog" loading="lazy" onerror="this.style.display='none'" />
+              <div class="play-icon">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><polygon points="10,8 16,12 10,16" fill="currentColor"/></svg>
+              </div>
+              <span class="card-type-badge">
+                <svg class="badge-yt" viewBox="0 0 24 24"><path d="M23 7s-.3-2-1.2-2.7c-1.1-1.2-2.4-1.2-3-1.3C16.2 3 12 3 12 3s-4.2 0-6.8.1c-.6.1-1.9.1-3 1.3C1.3 5 1 7 1 7S.7 9.2.7 11.4v2c0 2.2.3 4.4.3 4.4s.3 2 1.2 2.7c1.1 1.2 2.6 1.1 3.3 1.2C7.4 22 12 22 12 22s4.2 0 6.8-.3c.6-.1 1.9-.1 3-1.3.9-.7 1.2-2.7 1.2-2.7s.3-2.2.3-4.4v-2C23.3 9.2 23 7 23 7zM9.7 15.5V8.4l8.1 3.6-8.1 3.5z" fill="currentColor"/></svg>
+                Travel
+              </span>
+            </div>
+          </div>
+          <div class="card-info">
+            <p class="card-category">Travel</p>
+            <h3 class="card-title">Island Hopping Vlog</h3>
+            <p class="card-desc">Short-form travel series covering 5 islands — 3–5 min/ep.</p>
+          </div>
+        </div>
+
+        <!-- Graphic Design -->
+        <div class="work-card" data-category="graphic"
+             data-media-type="image" data-title="Campaign Key Visual"
+             data-desc="Full campaign artwork for retail brand across print &amp; digital.">
+          <div class="card-media">
+            <div class="card-thumb card-thumb--image" style="--hue:350">
+              <svg class="card-img-icon" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/><path d="M3 15l5-5 4 4 3-3 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <span class="card-type-badge">Commercial</span>
+            </div>
+          </div>
+          <div class="card-info">
+            <p class="card-category">Graphic Design · Commercial</p>
+            <h3 class="card-title">Campaign Key Visual</h3>
+            <p class="card-desc">Full campaign artwork for retail brand across print &amp; digital.</p>
+          </div>
+        </div>
+
+        <div class="work-card" data-category="graphic"
+             data-media-type="image" data-title="Social Media Series"
+             data-desc="Monthly content calendar design — Instagram &amp; Facebook.">
+          <div class="card-media">
+            <div class="card-thumb card-thumb--image" style="--hue:0">
+              <svg class="card-img-icon" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/><path d="M3 15l5-5 4 4 3-3 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <span class="card-type-badge">Content Post</span>
+            </div>
+          </div>
+          <div class="card-info">
+            <p class="card-category">Graphic Design · Content Post</p>
+            <h3 class="card-title">Social Media Series</h3>
+            <p class="card-desc">Monthly content calendar design — Instagram &amp; Facebook.</p>
+          </div>
+        </div>
+
+        <div class="work-card" data-category="graphic"
+             data-media-type="image" data-title="Brand Identity System"
+             data-desc="Logo, typography, and colour guide for F&amp;B brand.">
+          <div class="card-media">
+            <div class="card-thumb card-thumb--image" style="--hue:10">
+              <svg class="card-img-icon" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/><path d="M3 15l5-5 4 4 3-3 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <span class="card-type-badge">Commercial</span>
+            </div>
+          </div>
+          <div class="card-info">
+            <p class="card-category">Graphic Design · Commercial</p>
+            <h3 class="card-title">Brand Identity System</h3>
+            <p class="card-desc">Logo, typography, and colour guide for F&amp;B brand.</p>
+          </div>
+        </div>
+
+        <!-- Motion Graphic -->
+        <div class="work-card" data-category="motion"
+             data-media-type="youtube" data-media-id="YOUTUBE_ID_9"
+             data-title="Animated Logo Pack" data-desc="Logo animation stings for broadcast &amp; digital use — 3 versions.">
+          <div class="card-media">
+            <div class="card-thumb" style="--hue:270">
+              <img class="card-thumb-img" src="https://img.youtube.com/vi/YOUTUBE_ID_9/mqdefault.jpg"
+                   alt="Animated Logo Pack" loading="lazy" onerror="this.style.display='none'" />
+              <div class="play-icon">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><polygon points="10,8 16,12 10,16" fill="currentColor"/></svg>
+              </div>
+              <span class="card-type-badge">
+                <svg class="badge-yt" viewBox="0 0 24 24"><path d="M23 7s-.3-2-1.2-2.7c-1.1-1.2-2.4-1.2-3-1.3C16.2 3 12 3 12 3s-4.2 0-6.8.1c-.6.1-1.9.1-3 1.3C1.3 5 1 7 1 7S.7 9.2.7 11.4v2c0 2.2.3 4.4.3 4.4s.3 2 1.2 2.7c1.1 1.2 2.6 1.1 3.3 1.2C7.4 22 12 22 12 22s4.2 0 6.8-.3c.6-.1 1.9-.1 3-1.3.9-.7 1.2-2.7 1.2-2.7s.3-2.2.3-4.4v-2C23.3 9.2 23 7 23 7zM9.7 15.5V8.4l8.1 3.6-8.1 3.5z" fill="currentColor"/></svg>
+                Motion
+              </span>
+            </div>
+          </div>
+          <div class="card-info">
+            <p class="card-category">Motion Graphic</p>
+            <h3 class="card-title">Animated Logo Pack</h3>
+            <p class="card-desc">Logo animation stings for broadcast &amp; digital use — 3 versions.</p>
+          </div>
+        </div>
+
+        <div class="work-card" data-category="motion"
+             data-media-type="youtube" data-media-id="YOUTUBE_ID_10"
+             data-title="Infographic Animation" data-desc="Data-driven motion graphics for annual report — 90 sec.">
+          <div class="card-media">
+            <div class="card-thumb" style="--hue:285">
+              <img class="card-thumb-img" src="https://img.youtube.com/vi/YOUTUBE_ID_10/mqdefault.jpg"
+                   alt="Infographic Animation" loading="lazy" onerror="this.style.display='none'" />
+              <div class="play-icon">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><polygon points="10,8 16,12 10,16" fill="currentColor"/></svg>
+              </div>
+              <span class="card-type-badge">
+                <svg class="badge-yt" viewBox="0 0 24 24"><path d="M23 7s-.3-2-1.2-2.7c-1.1-1.2-2.4-1.2-3-1.3C16.2 3 12 3 12 3s-4.2 0-6.8.1c-.6.1-1.9.1-3 1.3C1.3 5 1 7 1 7S.7 9.2.7 11.4v2c0 2.2.3 4.4.3 4.4s.3 2 1.2 2.7c1.1 1.2 2.6 1.1 3.3 1.2C7.4 22 12 22 12 22s4.2 0 6.8-.3c.6-.1 1.9-.1 3-1.3.9-.7 1.2-2.7 1.2-2.7s.3-2.2.3-4.4v-2C23.3 9.2 23 7 23 7zM9.7 15.5V8.4l8.1 3.6-8.1 3.5z" fill="currentColor"/></svg>
+                Motion
+              </span>
+            </div>
+          </div>
+          <div class="card-info">
+            <p class="card-category">Motion Graphic</p>
+            <h3 class="card-title">Infographic Animation</h3>
+            <p class="card-desc">Data-driven motion graphics for annual report — 90 sec.</p>
+          </div>
+        </div>
+
+        <div class="work-card" data-category="motion"
+             data-media-type="gdrive" data-media-id="GDRIVE_FILE_ID_3"
+             data-title="Kinetic Typography Ad" data-desc="Text-driven motion piece for social campaign — 15 sec.">
+          <div class="card-media">
+            <div class="card-thumb" style="--hue:300">
+              <div class="card-thumb-drive">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 19.5h20L12 2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+                <span>Google Drive</span>
+              </div>
+              <div class="play-icon">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><polygon points="10,8 16,12 10,16" fill="currentColor"/></svg>
+              </div>
+              <span class="card-type-badge card-type-badge--drive">
+                <svg viewBox="0 0 24 24" fill="none" style="width:10px;height:10px"><path d="M12 2L2 19.5h20L12 2z" fill="currentColor"/></svg>
+                Motion
+              </span>
+            </div>
+          </div>
+          <div class="card-info">
+            <p class="card-category">Motion Graphic</p>
+            <h3 class="card-title">Kinetic Typography Ad</h3>
+            <p class="card-desc">Text-driven motion piece for social campaign — 15 sec.</p>
+          </div>
+        </div>
+
+      </div><!-- /work-grid -->
+    </div>
+  </section>
+
+  <!-- Client Logos -->
+  <section class="clients" id="clients">
+    <div class="container">
+      <p class="clients-eyebrow">Trusted By</p>
+      <div class="clients-track-wrap">
+        <div class="clients-track" id="clientsTrack">
+          <!-- ใส่ <img> จริงแทน logo placeholder เช่น <img src="assets/logos/brand-a.svg" alt="Brand A"> -->
+          <div class="client-logo" data-name="Brand A">
+            <svg viewBox="0 0 120 40" fill="none"><rect x="1" y="1" width="118" height="38" rx="4" stroke="currentColor" stroke-width="1" opacity=".3"/><text x="60" y="25" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="currentColor" opacity=".7">Brand A</text></svg>
+          </div>
+          <div class="client-logo" data-name="Studio B">
+            <svg viewBox="0 0 120 40" fill="none"><rect x="1" y="1" width="118" height="38" rx="4" stroke="currentColor" stroke-width="1" opacity=".3"/><text x="60" y="25" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="currentColor" opacity=".7">Studio B</text></svg>
+          </div>
+          <div class="client-logo" data-name="Agency C">
+            <svg viewBox="0 0 120 40" fill="none"><rect x="1" y="1" width="118" height="38" rx="4" stroke="currentColor" stroke-width="1" opacity=".3"/><text x="60" y="25" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="currentColor" opacity=".7">Agency C</text></svg>
+          </div>
+          <div class="client-logo" data-name="Corp D">
+            <svg viewBox="0 0 120 40" fill="none"><rect x="1" y="1" width="118" height="38" rx="4" stroke="currentColor" stroke-width="1" opacity=".3"/><text x="60" y="25" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="currentColor" opacity=".7">Corp D</text></svg>
+          </div>
+          <div class="client-logo" data-name="Media E">
+            <svg viewBox="0 0 120 40" fill="none"><rect x="1" y="1" width="118" height="38" rx="4" stroke="currentColor" stroke-width="1" opacity=".3"/><text x="60" y="25" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="currentColor" opacity=".7">Media E</text></svg>
+          </div>
+          <div class="client-logo" data-name="Brands F">
+            <svg viewBox="0 0 120 40" fill="none"><rect x="1" y="1" width="118" height="38" rx="4" stroke="currentColor" stroke-width="1" opacity=".3"/><text x="60" y="25" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="currentColor" opacity=".7">Brands F</text></svg>
+          </div>
+          <div class="client-logo" data-name="Group G">
+            <svg viewBox="0 0 120 40" fill="none"><rect x="1" y="1" width="118" height="38" rx="4" stroke="currentColor" stroke-width="1" opacity=".3"/><text x="60" y="25" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="currentColor" opacity=".7">Group G</text></svg>
+          </div>
+          <div class="client-logo" data-name="Studio H">
+            <svg viewBox="0 0 120 40" fill="none"><rect x="1" y="1" width="118" height="38" rx="4" stroke="currentColor" stroke-width="1" opacity=".3"/><text x="60" y="25" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="currentColor" opacity=".7">Studio H</text></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="container about-inner">
+      <div class="about-text">
+        <p class="section-eyebrow">About</p>
+        <h2 class="section-title">A studio built<br /><em>on craft.</em></h2>
+        <p class="about-body">
+          We're a small creative studio focused on making work that feels honest and purposeful. From long-form documentaries to punchy social reels, every project starts with a clear story — then we find the best medium to tell it.
+        </p>
+        <p class="about-body">
+          Our process is collaborative and transparent. We work closely with clients from concept through delivery, making sure every frame earns its place.
+        </p>
+        <div class="about-services">
+          <div class="service-item"><span class="service-dot"></span><span>Video Production (Long &amp; Short Form)</span></div>
+          <div class="service-item"><span class="service-dot"></span><span>Education Content</span></div>
+          <div class="service-item"><span class="service-dot"></span><span>Lifestyle Content</span></div>
+          <div class="service-item"><span class="service-dot"></span><span>Travel &amp; Documentary</span></div>
+          <div class="service-item"><span class="service-dot"></span><span>Graphic &amp; Commercial Design</span></div>
+          <div class="service-item"><span class="service-dot"></span><span>Motion Graphics</span></div>
+        </div>
+      </div>
+      <div class="about-stats">
+        <div class="stat-item">
+          <span class="stat-num">50+</span>
+          <span class="stat-label">Projects Delivered</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">30+</span>
+          <span class="stat-label">Happy Clients</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">5+</span>
+          <span class="stat-label">Years Experience</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="container contact-inner">
+      <p class="section-eyebrow">Let's Work Together</p>
+      <h2 class="contact-title">Have a project<br /><em>in mind?</em></h2>
+      <a href="mailto:hello@yourstudio.com" class="contact-email">hello@yourstudio.com</a>
+      <div class="contact-links">
+        <a href="#" class="contact-link">Instagram</a>
+        <span class="contact-divider">·</span>
+        <a href="#" class="contact-link">YouTube</a>
+        <span class="contact-divider">·</span>
+        <a href="#" class="contact-link">LINE</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span class="footer-logo">Studio<em>.</em></span>
+      <span class="footer-copy">© 2026 All rights reserved.</span>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+    <div class="lightbox-content" id="lightboxContent"></div>
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
+  <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
