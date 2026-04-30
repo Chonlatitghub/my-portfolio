@@ -224,6 +224,31 @@ function buildEmbed(card) {
       ></iframe>
     </div>`;
   }
+  if (type === 'tiktok' && id) {
+    return `<div class="lb-portrait-wrap">
+      <div class="lb-iframe-wrap lb-iframe-wrap--portrait">
+        <iframe
+          src="https://www.tiktok.com/embed/v2/${id}"
+          frameborder="0"
+          allow="autoplay; fullscreen"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      </div>
+    </div>`;
+  }
+  if (type === 'instagram' && id) {
+    return `<div class="lb-insta-wrap">
+      <iframe
+        src="https://www.instagram.com/p/${id}/embed/"
+        frameborder="0"
+        allow="autoplay; fullscreen"
+        allowfullscreen
+        scrolling="no"
+        loading="lazy"
+      ></iframe>
+    </div>`;
+  }
   // Fallback placeholder
   const badge = card.querySelector('.card-type-badge')?.textContent?.trim() || '';
   return `<div class="lb-placeholder" style="--hue:${hue}">

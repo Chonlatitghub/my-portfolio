@@ -417,8 +417,29 @@ body {
   gap: 5px;
   z-index: 3;
 }
-.card-type-badge--drive { border-color: rgba(66,176,124,.35); color: #42b07c; }
+.card-type-badge--drive  { border-color: rgba(66,176,124,.35);  color: #42b07c; }
+.card-type-badge--tiktok { border-color: rgba(255,0,80,.35);    color: #ff4d6d; }
+.card-type-badge--insta  { border-color: rgba(193,53,132,.35);  color: #e1306c; }
 .badge-yt { width: 11px; height: 11px; flex-shrink: 0; }
+.badge-tt { width: 10px; height: 10px; flex-shrink: 0; }
+.badge-ig { width: 10px; height: 10px; flex-shrink: 0; }
+
+/* platform icon in card thumbnail (TikTok / Instagram) */
+.card-thumb-platform {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(196,241,53,.3);
+}
+.card-thumb-platform svg  { width: 32px; height: 32px; }
+.card-thumb-platform span { font-size: .58rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(196,241,53,.35); }
+
+/* square aspect ratio variant */
+.card-thumb--square { padding-top: 100%; }
 
 /* ─── Client Logos ─── */
 .clients {
@@ -705,6 +726,44 @@ body {
   width: 100%;
   height: 100%;
   border: none;
+}
+
+/* TikTok portrait wrapper — centres a narrow 9:16 column */
+.lb-portrait-wrap {
+  display: flex;
+  justify-content: center;
+}
+.lb-iframe-wrap--portrait {
+  width: 100%;
+  max-width: 380px;
+  padding-top: 0;
+  height: min(680px, 80vh);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #000;
+  position: relative;
+}
+.lb-iframe-wrap--portrait iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Instagram embed wrapper */
+.lb-insta-wrap {
+  display: flex;
+  justify-content: center;
+}
+.lb-insta-wrap iframe {
+  width: 100%;
+  max-width: 540px;
+  height: 600px;
+  border: none;
+  border-radius: var(--radius-lg);
+  background: #000;
+  display: block;
 }
 
 /* fallback placeholder */
