@@ -504,11 +504,6 @@ body {
   width: auto;
   height: auto;
   object-fit: contain;
-  filter: brightness(0) invert(1);
-  transition: filter .3s;
-}
-.client-logo:hover img {
-  filter: brightness(0) invert(1) sepia(1) saturate(3) hue-rotate(35deg);
 }
 .client-logo img {
   max-width: 100%;
