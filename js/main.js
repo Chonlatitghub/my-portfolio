@@ -285,6 +285,46 @@ lightboxClose.addEventListener('click', closeLightbox);
 lightboxBackdrop.addEventListener('click', closeLightbox);
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
+/* ─── TikTok thumbnail auto-fetch via oEmbed ─── */
+(function loadTikTokThumbnails() {
+  const ttCards = document.querySelectorAll('[data-media-type="tiktok"]');
+  ttCards.forEach(card => {
+    const id = card.dataset.mediaId;
+    const authorId = card.dataset.authorId || 'kumpoy.food';
+    const oembedUrl =
+      `https://www.tiktok.com/oembed?url=${encodeURIComponent(
+        `https://www.tiktok.com/@${authorId}/video/${id}`
+      )}`;
+
+    fetch(oembedUrl)
+      .then(r => r.json())
+      .then(data => {
+        if (!data.thumbnail_url) return;
+        const thumb = card.querySelector('.card-thumb');
+        if (!thumb) return;
+        // remove platform icon placeholder
+        const icon = thumb.querySelector('.card-thumb-platform');
+        if (icon) icon.remove();
+        // inject real thumbnail
+        const img = document.createElement('img');
+        img.className = 'card-thumb-img';
+        img.src = data.thumbnail_url;
+        img.alt = data.title || 'TikTok';
+        img.loading = 'lazy';
+        img.onerror = () => img.style.display = 'none';
+        thumb.prepend(img);
+        // update card title/desc if still generic
+        if (data.title && card.dataset.title === card.querySelector('.card-title')?.textContent) {
+          const titleEl = card.querySelector('.card-title');
+          if (titleEl && titleEl.textContent.startsWith('Food Short')) {
+            titleEl.textContent = data.title.slice(0, 60) + (data.title.length > 60 ? '…' : '');
+          }
+        }
+      })
+      .catch(() => {}); // silently keep icon placeholder on error
+  });
+})();
+
 /* ─── Client logos infinite scroll (duplicate items) ─── */
 const clientsTrack = document.getElementById('clientsTrack');
 if (clientsTrack) {
