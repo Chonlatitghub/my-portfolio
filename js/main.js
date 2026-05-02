@@ -291,12 +291,9 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbo
   ttCards.forEach(card => {
     const id = card.dataset.mediaId;
     const authorId = card.dataset.authorId || 'kumpoy.food';
-    const oembedUrl =
-      `https://www.tiktok.com/oembed?url=${encodeURIComponent(
-        `https://www.tiktok.com/@${authorId}/video/${id}`
-      )}`;
-
-    fetch(oembedUrl)
+    // Use server-side proxy to avoid browser CORS block on TikTok oEmbed
+    const proxyUrl = `/api/tiktok-thumb?id=${id}&user=${authorId}`;
+    fetch(proxyUrl)
       .then(r => r.json())
       .then(data => {
         if (!data.thumbnail_url) return;
